@@ -6,14 +6,19 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Gabriel & Julia 💖</title>
 
-<!-- Fontes -->
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
     html, body {
-        margin: 0; padding: 0;
-        width: 100%; height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
         overflow: hidden;
         font-family: 'Poppins', sans-serif;
         background: radial-gradient(circle at top left, #ffb6c1, #ff69b4, #ff1493);
@@ -38,8 +43,11 @@
         z-index: 3;
     }
 
-    .nomes span { color: #ffe6f0; }
+    .nomes span {
+        color: #ffe6f0;
+    }
 
+    /* QUADRADO DO CONTADOR */
     .contador {
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(12px);
@@ -49,6 +57,32 @@
         max-width: 90%;
         z-index: 2;
         margin: 20px;
+        position: relative;
+    }
+
+    /* LÍRIOS */
+    .lirio {
+        position: absolute;
+        width: 75px;
+        height: 75px;
+        object-fit: contain;
+        z-index: 5;
+        pointer-events: none;
+        filter: drop-shadow(0 3px 5px rgba(0,0,0,0.15));
+    }
+
+    /* Lírio no canto superior esquerdo */
+    .lirio-esquerdo {
+        top: -38px;
+        left: -38px;
+        transform: rotate(-20deg);
+    }
+
+    /* Lírio no canto inferior direito */
+    .lirio-direito {
+        bottom: -38px;
+        right: -38px;
+        transform: rotate(160deg);
     }
 
     h1 {
@@ -72,11 +106,19 @@
         opacity: 0.9;
     }
 
-    .unidade { font-weight: bold; color: #fff; }
+    .unidade {
+        font-weight: bold;
+        color: #fff;
+    }
 
     @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
+        0%, 100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
     }
 
     .heart {
@@ -98,15 +140,31 @@
         height: 100%;
     }
 
-    .heart::before { top: -50%; left: 0; }
-    .heart::after { top: 0; left: 50%; }
-
-    @keyframes float {
-        from { transform: translateY(0) rotate(-45deg); opacity: 1; }
-        to { transform: translateY(-800px) rotate(-45deg); opacity: 0; }
+    .heart::before {
+        top: -50%;
+        left: 0;
     }
 
-    audio { display: none; }
+    .heart::after {
+        top: 0;
+        left: 50%;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(0) rotate(-45deg);
+            opacity: 1;
+        }
+
+        to {
+            transform: translateY(-800px) rotate(-45deg);
+            opacity: 0;
+        }
+    }
+
+    audio {
+        display: none;
+    }
 
     #volumeBtn {
         position: fixed;
@@ -124,7 +182,10 @@
         transition: 0.3s;
     }
 
-    #volumeBtn:active { transform: scale(0.95); background: rgba(255,255,255,0.3); }
+    #volumeBtn:active {
+        transform: scale(0.95);
+        background: rgba(255,255,255,0.3);
+    }
 
     #playHint {
         position: absolute;
@@ -140,45 +201,123 @@
     }
 
     @media (max-width: 480px) {
-        .nomes { font-size: 2.3em; top: 25px; }
-        h1 { font-size: 1.4em; }
-        p { font-size: 1em; }
-        #volumeBtn { font-size: 1.3em; bottom: 20px; right: 20px; }
+        .nomes {
+            font-size: 2.3em;
+            top: 25px;
+        }
+
+        h1 {
+            font-size: 1.4em;
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        #volumeBtn {
+            font-size: 1.3em;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .lirio {
+            width: 60px;
+            height: 60px;
+        }
+
+        .lirio-esquerdo {
+            top: -30px;
+            left: -30px;
+        }
+
+        .lirio-direito {
+            bottom: -30px;
+            right: -30px;
+        }
     }
 </style>
 </head>
 
 <body>
-    <div class="nomes">Gabriel <span>&</span> Julia</div>
 
-    <div class="contador">
-        <h1>💖 Nosso Tempinho 💖</h1>
-        <p id="tempo">Carregando...</p>
-        <p class="resumo" id="resumo">Carregando...</p>
+    <div class="nomes">
+        Gabriel <span>&</span> Julia
     </div>
 
-    <div id="playHint">💞 Toque para ouvir nossa música 💞</div>
-    <button id="volumeBtn">🔊</button>
+    <div class="contador">
+
+        <!-- LÍRIO SUPERIOR ESQUERDO -->
+        <img
+            class="lirio lirio-esquerdo"
+            src="https://i.imgur.com/88wJ1kK.png"
+            alt=""
+        >
+
+        <!-- LÍRIO INFERIOR DIREITO -->
+        <img
+            class="lirio lirio-direito"
+            src="https://i.imgur.com/88wJ1kK.png"
+            alt=""
+        >
+
+        <h1>💖 Nosso Tempinho 💖</h1>
+
+        <p id="tempo">
+            Carregando...
+        </p>
+
+        <p class="resumo" id="resumo">
+            Carregando...
+        </p>
+
+    </div>
+
+    <div id="playHint">
+        💞 Toque para ouvir nossa música 💞
+    </div>
+
+    <button id="volumeBtn">
+        🔊
+    </button>
 
     <audio id="bgMusic" loop>
         <source src="https://files.catbox.moe/q951ld.mp3" type="audio/mpeg">
     </audio>
 
 <script>
+
 const inicioNamoro = new Date(2026, 02, 14, 0, 0, 0);
 
 function atualizarContador() {
-    const agora = new Date();
-    let totalSegundos = Math.floor((agora - inicioNamoro) / 1000);
 
-    const segundos = totalSegundos % 60;
-    totalSegundos = Math.floor(totalSegundos / 60);
-    const minutos = totalSegundos % 60;
-    totalSegundos = Math.floor(totalSegundos / 60);
-    const horas = totalSegundos % 24;
-    const diasTotais = Math.floor(totalSegundos / 24);
-    const meses = Math.floor(diasTotais / 30);
-    const dias = diasTotais % 30;
+    const agora = new Date();
+
+    let totalSegundos =
+        Math.floor((agora - inicioNamoro) / 1000);
+
+    const segundos =
+        totalSegundos % 60;
+
+    totalSegundos =
+        Math.floor(totalSegundos / 60);
+
+    const minutos =
+        totalSegundos % 60;
+
+    totalSegundos =
+        Math.floor(totalSegundos / 60);
+
+    const horas =
+        totalSegundos % 24;
+
+    const diasTotais =
+        Math.floor(totalSegundos / 24);
+
+    const meses =
+        Math.floor(diasTotais / 30);
+
+    const dias =
+        diasTotais % 30;
 
     document.getElementById("tempo").innerHTML =
         `<span class="unidade">${meses}</span> meses, ` +
@@ -187,9 +326,14 @@ function atualizarContador() {
         `<span class="unidade">${minutos}</span> minutos e ` +
         `<span class="unidade">${segundos}</span> segundos`;
 
-    const totalHoras = diasTotais * 24 + horas;
-    const totalMinutos = totalHoras * 60 + minutos;
-    const totalSegundosTotal = totalMinutos * 60 + segundos;
+    const totalHoras =
+        diasTotais * 24 + horas;
+
+    const totalMinutos =
+        totalHoras * 60 + minutos;
+
+    const totalSegundosTotal =
+        totalMinutos * 60 + segundos;
 
     document.getElementById("resumo").innerHTML =
         `ou <span class="unidade">${diasTotais}</span> dias, ` +
@@ -201,38 +345,74 @@ function atualizarContador() {
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
-// Corações animados
+
+// CORAÇÕES ANIMADOS
+
 function criarCoracao() {
-    const heart = document.createElement('div');
+
+    const heart =
+        document.createElement('div');
+
     heart.classList.add('heart');
-    const tamanho = 10 + Math.random() * 20;
-    heart.style.width = `${tamanho}px`;
-    heart.style.height = `${tamanho}px`;
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+
+    const tamanho =
+        10 + Math.random() * 20;
+
+    heart.style.width =
+        `${tamanho}px`;
+
+    heart.style.height =
+        `${tamanho}px`;
+
+    heart.style.left =
+        Math.random() * window.innerWidth + 'px';
+
+    heart.style.animationDuration =
+        3 + Math.random() * 3 + 's';
+
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
 }
+
 setInterval(criarCoracao, 300);
 
-// Música e volume
-const music = document.getElementById("bgMusic");
-const hint = document.getElementById("playHint");
-const volumeBtn = document.getElementById("volumeBtn");
+
+// MÚSICA E VOLUME
+
+const music =
+    document.getElementById("bgMusic");
+
+const hint =
+    document.getElementById("playHint");
+
+const volumeBtn =
+    document.getElementById("volumeBtn");
+
 let muted = false;
 
 hint.addEventListener("click", () => {
+
     music.volume = 0.5;
+
     music.play().catch(() => {});
+
     hint.style.display = "none";
 });
 
-// Botão de volume sempre visível
 volumeBtn.addEventListener("click", () => {
+
     muted = !muted;
+
     music.muted = muted;
-    volumeBtn.textContent = muted ? "🔇" : "🔊";
+
+    volumeBtn.textContent =
+        muted ? "🔇" : "🔊";
 });
+
 </script>
+
 </body>
 </html>
